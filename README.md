@@ -63,3 +63,18 @@ VideoClub.
 En esta petición hemos obtenido primero la vista de administración de peliculas y en esta segunda petición rellenaremos el formulario de películas
 para obtener una nueva película en el video club a través de postman. Debermos cambiar el _csrf de la petición HTTP al que se nos dío en la petición
 get a la vista management-films para poder acceder a la petición de formulario de búsqueda de películas de administración.
+
+Por último nos deslogueremos accedermos como un usuario sin privilegios de administración e intentaremos acceder a una página de administración y comprobaremos
+que no tendremos acceso...
+
+
+    GET localhost:8080/login?logout -> Nos devuelve a la página de login del servicio.
+    POST localhost:8080/login
+            - username : user
+            - password : user1
+            - _csrf : a581b0cb-17f8-4a57-874e-8cae0a6f5e87
+
+Una vez realizadas estas dos peticiones estaremos logueados como un usuario normal sin privilegios de administración. Si ahora intentamos acceder a una página de administración
+nos devolverán la vista de acceso denegado del servicio web.
+
+![alt text](management-films-denied.png)
