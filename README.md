@@ -58,8 +58,6 @@ Una vez logueados vamos a acceder a la página de administración de películas 
 El servidor web nos devuelve la vista de administración de películas del VideoClub ahora realizaremos una petición para una película nueva dentro del
 VideoClub.
 
-![alt text](management-films.png)
-
 En esta petición hemos obtenido primero la vista de administración de peliculas y en esta segunda petición rellenaremos el formulario de películas
 para obtener una nueva película en el video club a través de postman. Debermos cambiar el _csrf de la petición HTTP al que se nos dío en la petición
 get a la vista management-films para poder acceder a la petición de formulario de búsqueda de películas de administración.
