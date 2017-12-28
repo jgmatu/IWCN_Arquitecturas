@@ -99,6 +99,8 @@ Después de utilizar jmeter por primera vez añadiremos el servidor web en la m�
 Una vez instalado y arrancado el servidor web realizaremos las pruebas jmeter comprobando la escalabilidad vertical de la aplicación web. Configuraremos la máquina virtual en
 modo host-only y realizaremos la petición a jmeter a través de la interfaz virtual que conecta la máquina host con la guest a traves de VirtualBox.
 
+![alt text](jmeter/jmeter-http-config.png)
+
 Realizaremos una primera prueba de estrés al servidor con una máquina de 512 MB de memoria RAM y con un grupo de 10 hilos...
 
 ![alt text](jmeter/jmeter-ok-10.png)
