@@ -135,3 +135,16 @@ En esta patanlla podemos ver que el aumento de la memoria RAM hace que el servid
 de límites de memoria en la JVM dando como resultado exitosas todas las peticiones HTTP realizadas desde los hilos de jmeter.
 
 ![alt text](jmeter/jmeter-response-ok-300.png)
+
+Ahora relizaremos los hitos de la práctica respecto a la máquina con 1GB de memoria RAM.
+
+  - Con 1000 hilos la máquina recibe todas las peticiones y es capaz de contestar a todos los clientes. En ambos casos el througput disminuye al realizar las peticiones
+  con un número N de clientes alto, es decir la cantidad de paquetes que es capaz de envíar correctamente por segundo disminuye, esto se debe a que el servidor únicamente
+  tiene una interfaz de red por donde enviar las respuestas teniendo un cuello de botella en el envío y recibo de paquetes por la red.
+
+  - Con 2000 hilos la aplicación ya entra dentro de los límites, es decir no es capaz de manejar tantas peticiones de manera simultánea dando excepciones de copia de memoria
+  en Arrays y por tanto un error de límites de memoria de la JVM dond está ejecutando el servicio web. Los clientes reciben una petición de que el socket al que intetna conectarse
+  se en cuentra cerrado. El througput decae debido a que la cantidad de paquetes que es capaz de contestar por segundo disminuye y el número de errores del servidor aumenta.
+
+
+![alt text](jmeter/jmeter-socket-closed-2000.png)
