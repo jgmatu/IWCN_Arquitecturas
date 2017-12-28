@@ -44,7 +44,7 @@ body form-data.
 
       username : root
       password : root1
-      \_csrf : 842e8745-aa30-43ce-9d6b-4e1c7220185f
+      _csrf : 842e8745-aa30-43ce-9d6b-4e1c7220185f
 
 De esta manera seremos capaces de loguearnos frente al servicio web con la configuración de autenticación de spring boot. El servicio web nos
 responderá con la página de inicio dandonos la bienvenida al VideoClub.
