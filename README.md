@@ -104,3 +104,21 @@ modo host-only y realizaremos la petición a jmeter a través de la interfaz vir
 Realizaremos una primera prueba de estrés al servidor con una máquina de 512 MB de memoria RAM y con un grupo de 10 hilos...
 
 ![alt text](jmeter/jmeter-ok-10.png)
+
+Después de realizar una primera prueba que funciona con 10 hilos realizaremos los hitos del enunciado.
+
+      - Con 100 hilos la aplicación funciona correctamente y no delays en las peticiones a los clientes.
+      - Con 200 hilos la aplicación tiene delays en las peticiones en los clientes se puede comprobar por el tiempo
+      que tardan en acabar la peticiones los hilos a través de la GUI y por el resumen final donde obtenemos una desviación de 708.60
+      que indica una variación en el tiempo de respuesta de los hilos muy significativa. También podemos medir el tiempo de respuesta
+      a través del througput que está aproxiadamente en 10 segundos
+
+      - Con 300 hilos la aplicación deja de funcionar. El servidor lanza excepciones hasta que llega a java.lang.OutOfMemoryError: Java heap space
+      lo que significa que la JVM del servidor web se ha quedado sin espacio en memoria. Los hilos de jmeter quedarán bloqueados y tendremos una
+      cantidad de error del 100% (en este caso) en el test de estrés de jmeter...
+
+![alt text](jmeter/jmeter-300-error.png)
+
+En las peticiones HTTP también veremos que hemos recibido mensajes de error de todas las peticiones de los hilos simulando cliente de jmeter...
+
+![alt text](jmeter/jmeter-request-error.png)
