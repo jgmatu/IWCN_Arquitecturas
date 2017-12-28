@@ -126,7 +126,12 @@ En las peticiones HTTP también veremos que hemos recibido mensajes de error de 
 Una vez comprobado el uso de jmeter y cuando nos salimos de límites de memoria en el servidor web con 512mb de RAM. Vamos a realizar las mismas pruebas
 aumentando la memoria de la máquina virtual...
 
-Probaremos en primera instancia donde nos quedamos en el límite anterior de esta manera comprobaremos si el aumento de la memoria de la máquina consigue realizar un
+Probaremos primero donde nos quedamos en el límite anterior de esta manera comprobaremos si el aumento de la memoria de la máquina consigue realizar un
 escalado en la cantidad de peticiones que es capaz de recibir el servidor web.
 
 ![alt text](jmeter/jmeter-300-success.png)
+
+En esta patanlla podemos ver que el aumento de la memoria RAM hace que el servidor sea capaz de soportar 300 peticiones de manera concurrente sin tener problemas
+de límites de memoria en la JVM dando como resultado exitosas todas las peticiones HTTP realizadas desde los hilos de jmeter.
+
+![alt text](jmeter/jmeter-response-ok-300.png)
