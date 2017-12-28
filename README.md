@@ -77,7 +77,7 @@ que no tendremos acceso...
 Una vez realizadas estas dos peticiones estaremos logueados como un usuario normal sin privilegios de administración. Si ahora intentamos acceder a una página de administración
 nos devolverán la vista de acceso denegado del servicio web.
 
-![alt text](management-films-denied.png)
+![alt text](postman/management-films-denied.png)
 
 ### Uso de Jmeter
 
@@ -89,7 +89,7 @@ Como primer paso instalamos jmeter desde la consola de comandos como hicimos en 
 Podremos comprobar nuestro servidor y ver cuantas peticiones es capaz de aguantar, utilizando el recurso de la práctica para relizar las peticiones http al servidor web a través de
 jmeter.
 
-![alt text](management-films-search.png)
+![alt text](jmeter/jmeterhttp.png)
 
 Después de utilizar jmeter por primera vez añadiremos el servidor web en la máquina virtual a través de github, instalando las dependencias necesarias mvn docker etc...
 
