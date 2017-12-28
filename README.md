@@ -148,3 +148,15 @@ Ahora relizaremos los hitos de la práctica respecto a la máquina con 1GB de me
 
 
 ![alt text](jmeter/jmeter-socket-closed-2000.png)
+
+
+#### Conclusiones extraidas
+
+  - El througput mejora cuando obtenemos un mayor número de memoria realizando un mayor número de peticiones aceptadas por segundo y mejorando los tiepos de respuesta en los clientes
+  por cada petición que realizan al servidor.
+
+  - El aumento de la memoria consigue realizar un mayor número de peticiones de manera simultánea o concurrente dentro del servidor web, hemos llegado de 200 conexiones concurrentes en un
+  servidor con 512mb de RAM a 1000 peticiones simultáneas en un servidor con 1GB de memoria RAM.
+
+Las arquitecturas centralizadas son escalables siempre que mejoremos los recuros con los que cuenta la máquina optimizando los tiempos de respuesta del servicio o sistema. Sin embargo no son tolerantes
+a fallos. Si el servidor que mantiene el servicio web falla los usuarios se quedarán sin servicio. Al igual que el coste de tener un servidor con más recursos puede ser alto.
