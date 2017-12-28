@@ -101,4 +101,4 @@ modo host-only y realizaremos la petición a jmeter a través de la interfaz vir
 
 Realizaremos una primera prueba de estrés al servidor con una máquina de 512 MB de memoria RAM y con un grupo de 10 hilos...
 
-![alt text](jmter/jmeter-ok-10.png)
+![alt text](jmeter/jmeter-ok-10.png)
