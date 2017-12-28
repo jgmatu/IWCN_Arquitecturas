@@ -27,4 +27,4 @@ La primera petición HTTP será un GET a la página home, el servicio web nos de
 HTML con la página de inicio del servicio web. Donde se puede crear el usuario o comprobar una película
 para ver.
 
-![alt text](/home/javi/Pictures/home.png)
+![alt text](home.png)
