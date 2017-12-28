@@ -50,3 +50,18 @@ responderá con la página de inicio dándonos la bienvenida al VideoClub. Una v
 acceder a todas las páginas de administración del VideoClub.
 
 ![alt text](login-success.png)
+
+Una vez logueados vamos a acceder a la página de administración de películas del video club.
+
+    GET localhost:8080/management/films
+
+El servidor web nos devuelve la vista de administración de películas del VideoClub ahora realizaremos una petición para una película nueva dentro del
+VideoClub.
+
+![alt text](management-films.png)
+
+En esta petición hemos obtenido primero la vista de administración de peliculas y en esta segunda petición rellenaremos el formulario de películas
+para obtener una nueva película en el video club a través de postman. Debermos cambiar el _csrf de la petición HTTP al que se nos dío en la petición
+get a la vista management-films para poder acceder a la petición de formulario de búsqueda de películas de administración.
+
+![alt text](management-films-search.png)
