@@ -48,3 +48,5 @@ body form-data.
 
 De esta manera seremos capaces de loguearnos frente al servicio web con la configuración de autenticación de spring boot. El servicio web nos
 responderá con la página de inicio dandonos la bienvenida al VideoClub.
+
+![alt text](debug-login.png)
