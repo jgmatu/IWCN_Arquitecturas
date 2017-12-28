@@ -79,7 +79,7 @@ nos devolverán la vista de acceso denegado del servicio web.
 
 ![alt text](postman/management-films-denied.png)
 
-### Uso de Jmeter
+### Uso de Jmeter en escalado vertical
 
 Como primer paso instalamos jmeter desde la consola de comandos como hicimos en postman
 
@@ -122,3 +122,11 @@ Después de realizar una primera prueba que funciona con 10 hilos realizaremos l
 En las peticiones HTTP también veremos que hemos recibido mensajes de error de todas las peticiones de los hilos simulando cliente de jmeter...
 
 ![alt text](jmeter/jmeter-request-error.png)
+
+Una vez comprobado el uso de jmeter y cuando nos salimos de límites de memoria en el servidor web con 512mb de RAM. Vamos a realizar las mismas pruebas
+aumentando la memoria de la máquina virtual...
+
+Probaremos en primera instancia donde nos quedamos en el límite anterior de esta manera comprobaremos si el aumento de la memoria de la máquina consigue realizar un
+escalado en la cantidad de peticiones que es capaz de recibir el servidor web.
+
+![alt text](jmeter/jmeter-300-success.png)
