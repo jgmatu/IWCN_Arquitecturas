@@ -27,7 +27,7 @@ La primera petición HTTP será un GET a la página home, el servicio web nos de
 HTML con la página de inicio del servicio web. Donde se puede crear el usuario o comprobar una película
 para ver.
 
-![alt text](home.png)
+![alt text](postman/home.png)
 
 Si intentamos acceder a la página de administración de usuarios sin estar autenticados frente al servicio web como usuarios administradores
 nos redigirá a la página de login por no estar todavía autenticados, relizando cualquier tipo de petición post get put delete etc...
@@ -43,13 +43,13 @@ Una vez comprobada la autenticación del servicio web vamos a loguearnos deberem
 body form-data. No es del todo obvio la autenticación hemos necesitado realizar una depuración de la autenticación en un cliente web para comprobar
 que campos son los que realmente se mandan al servidor web.
 
-![alt text](debug-login.png)
+![alt text](postman/debug-login.png)
 
 De esta manera seremos capaces de loguearnos frente al servicio web con la configuración de autenticación de spring boot. El servicio web nos
 responderá con la página de inicio dándonos la bienvenida al VideoClub. Una vez logueados en el servicio web como usuario administrador podriamos
 acceder a todas las páginas de administración del VideoClub.
 
-![alt text](login-success.png)
+![alt text](postman/login-success.png)
 
 Una vez logueados vamos a acceder a la página de administración de películas del video club.
 
@@ -58,7 +58,7 @@ Una vez logueados vamos a acceder a la página de administración de películas 
 El servidor web nos devuelve la vista de administración de películas del VideoClub ahora realizaremos una petición para una película nueva dentro del
 VideoClub.
 
-![alt text](management-films-search.png)
+![alt text](postman/agement-films-search.png)
 
 En esta petición hemos obtenido primero la vista de administración de peliculas y en esta segunda petición rellenaremos el formulario de películas
 para obtener una nueva película en el video club a través de postman. Debermos cambiar el _csrf de la petición HTTP al que se nos dío en la petición
@@ -78,3 +78,22 @@ Una vez realizadas estas dos peticiones estaremos logueados como un usuario norm
 nos devolverán la vista de acceso denegado del servicio web.
 
 ![alt text](management-films-denied.png)
+
+### Uso de Jmeter
+
+Como primer paso instalamos jmeter desde la consola de comandos como hicimos en postman
+
+      $ tar -xvzf apache-jmeter-3.3.tgz
+      $ ./apache-jmeter-3.3/bin/jmeter
+
+Podremos comprobar nuestro servidor y ver cuantas peticiones es capaz de aguantar, utilizando el recurso de la práctica para relizar las peticiones http al servidor web a través de
+jmeter.
+
+![alt text](management-films-search.png)
+
+Después de utilizar jmeter por primera vez añadiremos el servidor web en la máquina virtual a través de github, instalando las dependencias necesarias mvn docker etc...
+
+      $ install java8...
+      $ install docker...
+
+Una vez instalado y arrancado el servidor web realizaremos las pruebas jmeter comprobando la escalabilidad vertical de la aplicación web.
