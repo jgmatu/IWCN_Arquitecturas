@@ -105,7 +105,7 @@ Realizaremos una primera prueba de estrés al servidor con una máquina de 512 M
 
 ![alt text](jmeter/jmeter-ok-10.png)
 
-Después de realizar una primera prueba que funciona con 10 hilos realizaremos los hitos del enunciado.
+** Después de realizar una primera prueba que funciona con 10 hilos realizaremos los hitos del enunciado. ** 
 
       - Con 100 hilos la aplicación funciona correctamente y no delays en las peticiones a los clientes.
       - Con 200 hilos la aplicación tiene delays en las peticiones en los clientes se puede comprobar por el tiempo
