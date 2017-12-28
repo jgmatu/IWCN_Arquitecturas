@@ -40,13 +40,13 @@ Ambas peticiones nos llevan a la misma plantilla:
     login.html
 
 Una vez comprobada la autenticación del servicio web vamos a loguearnos deberemos rellenar en una petición post los siguientes campos en formato
-body form-data.
-
-      username : root
-      password : root1
-      _csrf : 842e8745-aa30-43ce-9d6b-4e1c7220185f
-
-De esta manera seremos capaces de loguearnos frente al servicio web con la configuración de autenticación de spring boot. El servicio web nos
-responderá con la página de inicio dandonos la bienvenida al VideoClub.
+body form-data. No es del todo obvio la autenticación hemos necesitado realizar una depuración de la autenticación en un cliente web para comprobar
+que campos son los que realmente se mandan al servidor web.
 
 ![alt text](debug-login.png)
+
+De esta manera seremos capaces de loguearnos frente al servicio web con la configuración de autenticación de spring boot. El servicio web nos
+responderá con la página de inicio dándonos la bienvenida al VideoClub. Una vez logueados en el servicio web como usuario administrador podriamos
+acceder a todas las páginas de administración del VideoClub.
+
+![alt text](login-success.png)
