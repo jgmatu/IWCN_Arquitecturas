@@ -236,4 +236,4 @@ Una vez añadido el método cache con una entrada, el identicador de las pelícu
 del servicio lento en las mediciones con jmeter. La primera petición (o una de ellas tarda 5000 ms) si luego volvemos a lanzar las misma peticiones con la petición ya cacheada las peticiones no tardan más de 12 ms en
 recibir respuesta del servidor.
 
-![alt text](db/cache-5000ms.png)
+![alt text](cache/cache-5000ms.png)
