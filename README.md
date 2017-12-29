@@ -204,12 +204,36 @@ en cuenta a la hora de realizar las pruebas. No podemos asumir que no hay latenc
 Para este ejemplo hemos creado un endpoint en el servidor web que simula un procesamiento de datos complejo que tiene un tiempo de respuesta alto, añadiendo un sleep antes de el envío de respuesta de un String en un método
 testCache. Añadimos el método y la notación @Cacheable para tener cacheada la respuesta.
 
-      @RequestMapping(value = "testCahce", method = RequestMethod.POST)
-      @Cacheable("test_cache")
-      private ModelAndView testCache(String title) throws InterruptedException {
-            Film film = filmsService.getFilm(title);
-            Thread.sleep(5000);
-            return new ModelAndView(MANAGEMENT_FILMS).addObject("film", film);
+      // Punto de entrada al programa debemos habilitar la cache.
+
+      @SpringBootApplication
+      @EnableCaching
+      public class VideoClubApp {
+            public static void main(String[] args) {
+                  SpringApplication.run(VideoClubApp.class, args);
+            }
       }
 
-Una vez añadido
+      // En el controlador realizamos un metodo que simule un servicio que tenga
+      // latencia o tarde un tiempo en contestar y que esté cacheado...
+
+      @Cacheable("test")
+	@RequestMapping(value = "testCache", method = RequestMethod.GET)
+	public ModelAndView testCache(@RequestParam String title) {
+		simulateSlowService();
+		return new ModelAndView(MANAGEMENT_FILMS);
+	}
+
+	private void simulateSlowService() {
+		try {
+			Thread.sleep(5000);			
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}		
+	}
+
+Una vez añadido el método cache con una entrada, el identicador de las películas comprobaremos el uso de cache con meter. Si usamos la máquina host y un conjunto de hilos pequeño comprobaremos cual es problema en el uso
+del servicio lento en las mediciones con jmeter. La primera petición (o una de ellas tarda 5000 ms) si luego volvemos a lanzar las misma peticiones con la petición ya cacheada las peticiones no tardan más de 12 ms en
+recibir respuesta del servidor.
+
+![alt text](db/cache-5000ms.png)
