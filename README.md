@@ -183,3 +183,15 @@ la base de datos sigue funcinando. Si algún otro servicio estuviera ejecutando 
 Vamos a comprobar el funcionamiento de las dos máquinas con 1000 hilos de ejecución.
 
 ![alt text](db/1000db-sep.png)
+
+Esta es la ejecución con la base de datos separada del servidor web como primera arquitectura horizontal.
+
+![alt text](db/1000db-un.png)
+
+Esta es la ejecución con la base de datos en la misma máquina que el servidor web.
+
+### Conclusiones extraidas
+
+En ambos casos las peticiones de los clientes son respondidas, sin embargo, el uso de la base de datos en una máquina diferente tiene una mejora en el tiempo de respuesta a los clientes que se puede observar en el througput
+que es mayor en el primer escenario con la base de datos separada y el tiempo total de respuesta que es menor también en el primer escenario con la base de datos separada. De todas maneras el cambio más significativo es que
+al caerse el servidor web con la base de datos separada. La base de datos no se ve afectada por la caida pudiendo dar servicio a otros servidores que estén usando la base de datos en ese momento.
