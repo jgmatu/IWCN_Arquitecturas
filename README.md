@@ -198,3 +198,5 @@ al caerse el servidor web con la base de datos separada. La base de datos no se 
 
 También comentar que el envío y recibo de datos en el primer ejemplo es mayor ya que al tener la base de datos separada hay algo más de tráfico de red, en este ejemplo la latencia entre máquinas es nula cosa que deberíamos tener
 en cuenta a la hora de realizar las pruebas. No podemos asumir que no hay latencia entre la base de datos y el servidor web en unas pruebas de rendimiento reales.
+
+# Arquitectura separación entre aplicación y BD con caché
