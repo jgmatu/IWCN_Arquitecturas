@@ -143,20 +143,43 @@ Ahora relizaremos los hitos de la práctica respecto a la máquina con 1GB de me
   tiene una interfaz de red por donde enviar las respuestas teniendo un cuello de botella en el envío y recibo de paquetes por la red.
 
   - Con 2000 hilos la aplicación ya entra dentro de los límites, es decir no es capaz de manejar tantas peticiones de manera simultánea dando excepciones de copia de memoria
-  en Arrays y por tanto un error de límites de memoria de la JVM dond está ejecutando el servicio web. Los clientes reciben una petición de que el socket al que intetna conectarse
+  en Arrays y por tanto un error de límites de memoria de la JVM donde está ejecutando el servicio web. Los clientes reciben una petición de que el socket al que intetna conectarse
   se en cuentra cerrado. El througput decae debido a que la cantidad de paquetes que es capaz de contestar por segundo disminuye y el número de errores del servidor aumenta.
-
 
 ![alt text](jmeter/jmeter-socket-closed-2000.png)
 
-
 #### Conclusiones extraidas
 
-  - El througput mejora cuando obtenemos un mayor número de memoria realizando un mayor número de peticiones aceptadas por segundo y mejorando los tiepos de respuesta en los clientes
+  - El througput mejora cuando obtenemos un mayor espacio de memoria realizando un mayor número de peticiones aceptadas por segundo y mejorando los tiempos de respuesta en los clientes
   por cada petición que realizan al servidor.
 
   - El aumento de la memoria consigue realizar un mayor número de peticiones de manera simultánea o concurrente dentro del servidor web, hemos llegado de 200 conexiones concurrentes en un
   servidor con 512mb de RAM a 1000 peticiones simultáneas en un servidor con 1GB de memoria RAM.
 
-Las arquitecturas centralizadas son escalables siempre que mejoremos los recuros con los que cuenta la máquina optimizando los tiempos de respuesta del servicio o sistema. Sin embargo no son tolerantes
-a fallos. Si el servidor que mantiene el servicio web falla los usuarios se quedarán sin servicio. Al igual que el coste de tener un servidor con más recursos puede ser alto.
+Las arquitecturas centralizadas son escalables siempre que mejoremos los recursos con los que cuenta la máquina optimizando los tiempos de respuesta del servicio o sistema. Sin embargo no son tolerantes
+a fallos. Si el servidor que mantiene el servicio web falla los usuarios se quedarán sin servicio. Al igual que el coste de tener un servidor con más recursos puede resultar más alto que tener replicas con
+balanceadores de carga.
+
+
+# Separación entre la base de datos y el servidor web
+
+En esta arquitectura vamos a crear una nueva máquina virtual donde situaremos la base de datos. El servidor deberá ser configurado para acceder a la base de datos externa por su dirección ip en el fichero
+application.yml donde se definde la conexión con JPA. Una vez conetado el servidor a la base de datos comprobaremos con jmeter los nuevos tiempos, cantidad de petciones concurrentes etc... Las máquinas
+virtuales seguirán el mismo esquema de red estarán en una red host-only donde estarán conectadas entre sí y con el host que es donde estamos lanzando los clientes con jmeter.
+
+Ambas máquinas cuentan con 1GB de memoria RAM.
+
+  - Con 1000 hilos el servidor funciona de forma fluida con un througput alto, indicando que los clientes reciben la petición que realizan de manera rápida, además de no tener errores con ninguna de las
+  peticiones que se realizan desde los clientes.
+
+  - Con 2000 hilos el througput disminuye, indicando una mayor lentitud en la respuesta del servidor a los clientes y seguimos teniendo problemas de memoria ya que obtenermos un java.lang.OutOfMemoryError: Java heap
+  space de la JVM en la máquina que soporta el servidor web.
+
+¿Qué ha cambiado respecto al ejemplo anterior y porqué?
+
+Para responder esta pregunta debemos realizar la comparación de resultados entre las medidas de las dos arquitecturas la que tiene la base de datos separada y la que no. Una de las principales diferencias es que en este caso
+la base de datos sigue funcinando. Si algún otro servicio estuviera ejecutando desde otra máquina a la misma base de datos el segundo servicio no se veria afectado por la caida del servidor web.
+
+Vamos a comprobar el funcionamiento de las dos máquinas con 1000 hilos de ejecución.
+
+![alt text](db/1000db-sep.png)
