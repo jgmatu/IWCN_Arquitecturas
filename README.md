@@ -253,6 +253,9 @@ Volvemos a tener el mismo tiempo máximo en una de las peticiones y luego un tie
 
 Ahora probaremos el uso de jmeter en la página /home que tiene el método findAll() de películas para comprobar los tiempos con jmeter...
 
+
+      // Modificación del método findAll para hacerlo cacheable en la búsqueda de todas las películas.
+
       public interface FilmsRepository extends CrudRepository<Film, String> {
       	@Override
       	@Cacheable
@@ -260,3 +263,14 @@ Ahora probaremos el uso de jmeter en la página /home que tiene el método findA
       }
 
 ![alt text](cache/cache-findall.png)
+
+Una vez realizado la cache del método find all de películas comprobamos la diferencia de tiempos entre ambas peticiones las cacheadas y las no cacheadas.
+
+
+  - Petciones no cacheadas:
+
+![alt text](cache/cache-no-cache.png)
+
+  - Peticiones cacheadas:
+
+![alt text](cache/cache-yes-cache.png)
