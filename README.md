@@ -274,3 +274,6 @@ Una vez realizado la cache del método find all de películas comprobamos la dif
   - Peticiones cacheadas:
 
 ![alt text](cache/cache-yes-cache.png)
+
+El througput es mayor en las peticiones que el servidor ya tiene cacheadas ya que no se tienen que realizar las peticiones a la base de datos el servidor tiene en memoria
+la petición que tiene que contestar a los clientes con la misma entrada, mismo endpoint con misma entrada de datos.
