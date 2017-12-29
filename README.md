@@ -237,3 +237,15 @@ del servicio lento en las mediciones con jmeter. La primera petición (o una de 
 recibir respuesta del servidor.
 
 ![alt text](cache/cache-5000ms.png)
+
+Esta primeras 100 peticiones una de ellas o varias han durado un total de 5000 ms máximo tiempo de respuesta...
+
+![alt text](cache/cache-10-ms.png)
+
+En esta segunda petición se puede comprobar que no se tarda más de 8ms en contestar a todos los clientes como tiempo máximo.
+
+Si cambiamos el tipo de petición....
+
+![alt text](cache/cache-config.png)
+
+Volvemos a tener el mismo tiempo máximo en una de las peticiones y luego un tiempo máximo de 8ms en la siguientes peticiones con la petición ya cacheada.
