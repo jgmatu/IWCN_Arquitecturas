@@ -249,3 +249,14 @@ Si cambiamos el tipo de petición....
 ![alt text](cache/cache-config.png)
 
 Volvemos a tener el mismo tiempo máximo en una de las peticiones y luego un tiempo máximo de 8ms en la siguientes peticiones con la petición ya cacheada.
+
+
+Ahora probaremos el uso de jmeter en la página /home que tiene el método findAll() de películas para comprobar los tiempos con jmeter...
+
+      public interface FilmsRepository extends CrudRepository<Film, String> {
+      	@Override
+      	@Cacheable
+      	public List<Film> findAll();
+      }
+
+![alt text](cache/cache-findall.png)
