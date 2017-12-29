@@ -200,3 +200,16 @@ También comentar que el envío y recibo de datos en el primer ejemplo es mayor 
 en cuenta a la hora de realizar las pruebas. No podemos asumir que no hay latencia entre la base de datos y el servidor web en unas pruebas de rendimiento reales.
 
 # Arquitectura separación entre aplicación y BD con caché
+
+Para este ejemplo hemos creado un endpoint en el servidor web que simula un procesamiento de datos complejo que tiene un tiempo de respuesta alto, añadiendo un sleep antes de el envío de respuesta de un String en un método
+testCache. Añadimos el método y la notación @Cacheable para tener cacheada la respuesta.
+
+      @RequestMapping(value = "testCahce", method = RequestMethod.POST)
+      @Cacheable("test_cache")
+      private ModelAndView testCache(String title) throws InterruptedException {
+            Film film = filmsService.getFilm(title);
+            Thread.sleep(5000);
+            return new ModelAndView(MANAGEMENT_FILMS).addObject("film", film);
+      }
+
+Una vez añadido
