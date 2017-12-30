@@ -339,7 +339,7 @@ Y para acceder a la página de estadísticas:
 
       http://localhost:9000/haproxy_stats
 
-(Referencia de documentación haproxy stardistics)[https://www.datadoghq.com/blog/how-to-collect-haproxy-metrics/]
+[Referencia de documentación haproxy stardistics](https://www.datadoghq.com/blog/how-to-collect-haproxy-metrics/)
 
 ![alt text](haproxy/haproxy-state.png)
 
