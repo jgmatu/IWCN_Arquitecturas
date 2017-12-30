@@ -322,7 +322,24 @@ Para arrancar el balanceador con la configuración actual debemos ejecutar la si
 Debemos realizar el comando con privilegios de administrador ya que el balanceador necesita trabajar con directorios
 que pertencen a root.
 
-Una vez lanzado el navegador podremos utilizar la IP del balanceador para acceder al servicio web. Realizamos una primera petición con Postman al balanceador
-de uno de los endpoint de nuestro servidor.
+Una vez lanzado el navegador podremos utilizar la IP del balanceador para acceder al servicio web.
+
+Para acceder a la página de estadísticas tenemos que configurar el haproxy con la siguientes lineas de configuración.
+
+      listen stats # Define a listen section called "stats"
+              bind :9000 # Listen on localhost:9000   
+              mode http
+              stats enable  # Enable stats page
+              stats hide-version  # Hide HAProxy version
+              stats realm Haproxy\ Statistics  # Title text for popup window
+              stats uri /haproxy_stats  # Stats URI
+              stats auth admin:admin  # Authentication credentials
+
+Y para acceder a la página de estadísticas:
+
+      http://localhost:9000/haproxy_stats
 
 ![alt text](haproxy/haproxy-state.png)
+
+Se puede observar desde la página de estadísticas el estado de los backend que mantiene el balanceador. En este caso ambas máquinas
+están en funcionamiento.
