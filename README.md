@@ -339,7 +339,7 @@ Y para acceder a la página de estadísticas:
 
       http://localhost:9000/haproxy_stats
 
-[Referencia de documentación haproxy stardistics](https://www.datadoghq.com/blog/how-to-collect-haproxy-metrics/)
+[Referencia de documentación haproxy stadistics](https://www.datadoghq.com/blog/how-to-collect-haproxy-metrics/)
 
 ![alt text](haproxy/haproxy-state.png)
 
@@ -359,3 +359,12 @@ son también 200 Ok. El balanceador contesta a los clientes con el código de re
 El balaneador es transparente para el cliente.
 
 ![alt text](haproxy/haproxy-response.png)
+
+
+Ahora vamos a comprobar que ocurre si una de los dos servidores se cayera... Apagamos una de las dos instancias.
+
+![alt text](haproxy/haproxy-down-server.png)
+
+Una vez apagada comprobamos el estado de los servidores en el balanceador..
+
+![alt text](haproxy/haproxy-state-1-down.png)
