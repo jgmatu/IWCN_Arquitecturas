@@ -346,7 +346,6 @@ Y para acceder a la página de estadísticas:
 Se puede observar desde la página de estadísticas el estado de los backend que mantiene el balanceador. En este caso ambas máquinas
 están en funcionamiento.
 
-
 Realizamos peticiones de insercción al servidor web, las respuestas recibidas del servidor son siempore 200 OK. Todas las siguientes peticiones
 son también 200 Ok. El balanceador contesta a los clientes con el código de respuesta que le manda el servidor a el es decir.
 
@@ -360,7 +359,6 @@ El balaneador es transparente para el cliente.
 
 ![alt text](haproxy/haproxy-response.png)
 
-
 Ahora vamos a comprobar que ocurre si una de los dos servidores se cayera... Apagamos una de las dos instancias.
 
 ![alt text](haproxy/haproxy-down-server.png)
@@ -369,6 +367,11 @@ Una vez apagada comprobamos el estado de los servidores en el balanceador..
 
 ![alt text](haproxy/haproxy-state-1-down.png)
 
-Si accedemos al servicio web desde el balanceador aún tendremos conexión al servicio. Hay un intervalo de tiempo en el que el servidor está caído.
+Si accedemos al servicio web desde el balanceador aún tendremos conexión al servicio. Hay un intervalo de tiempo en el que el servidor está caído y
+por tanto un corte del servicio.
 
 ![alt text](haproxy/haproxy-view.png)
+
+Si volvemos a arrancar la máquina parada se vuelve a tener las dos máquinas ejecutando el servicio con estado correcto...
+
+![alt text](haproxy/haproxy-state.png)
