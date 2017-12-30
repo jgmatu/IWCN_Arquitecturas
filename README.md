@@ -355,3 +355,5 @@ son también 200 Ok. El balanceador contesta a los clientes con el código de re
   - haproxy Response 200 OK -> client.
 
 El balaneador es transparente para el cliente.
+
+![alt text](haproxy/haproxy-response.png)
