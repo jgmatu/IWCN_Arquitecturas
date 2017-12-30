@@ -368,3 +368,7 @@ Ahora vamos a comprobar que ocurre si una de los dos servidores se cayera... Apa
 Una vez apagada comprobamos el estado de los servidores en el balanceador..
 
 ![alt text](haproxy/haproxy-state-1-down.png)
+
+Si accedemos al servicio web desde el balanceador aún tendremos conexión al servicio. Hay un intervalo de tiempo en el que el servidor está caído.
+
+![alt text](haproxy/haproxy-view.png)
