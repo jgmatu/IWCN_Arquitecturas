@@ -376,7 +376,6 @@ Si volvemos a arrancar la máquina parada se vuelve a tener las dos máquinas ej
 
 ![alt text](haproxy/haproxy-state.png)
 
-
 ### Conclusiones extraidas con balanceador.
 
 Una de las cosas importantes es pensar en como se sincronizan entre las instancias los datos recibidos entre los clientes. El soporte de datos de los dos servidores
@@ -394,3 +393,5 @@ más cercanos o el balanceador de carga que se encuentre disponible. Faltaría p
 base de datos maestra y varias replicas esclava puede ser una solución si el tipo de base de datos con la que estamos trabajando es relacional. En caso de que la base de datos fuera
 no SQL como MongoDB se podría pensar en particionado de la base de datos en un clúster de máquinas que además de poder ser replicado y por tanto tolerante a fallos podríamos optimizar
 las búsquedas de los clientes en un escalado de la base de datos insertando nuevos nodos al clúster de MongoDB.
+
+![alt text](arch/dns-arch.png)
