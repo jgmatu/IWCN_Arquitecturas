@@ -277,3 +277,52 @@ Una vez realizado la cache del método find all de películas comprobamos la dif
 
 El througput es mayor en las peticiones que el servidor ya tiene cacheadas ya que no se tienen que realizar las peticiones a la base de datos el servidor tiene en memoria
 la petición que tiene que contestar a los clientes con la misma entrada, mismo endpoint con misma entrada de datos.
+
+# Arquitectura con balanceador de carga
+
+instalamos haproxy desde linea de comandos tal y como está puesto el enunciado debemos tener el fichero de configuración en /etc/haproxy/haproxy.cfg
+
+      $ sudo apt install haproxy
+
+Una vez instalado debemos decirle al balanceador:
+
+  - El protocolo de comunicación HTTP.
+  - Las IP's de servidores backend web's que debe balancear
+  - La IP donde va a a estar escuchando el balanceador.
+
+Esto se debe decidir en el fichero /etc/haproxy/haproxy.cfg de la siguiente manera:
+
+      # Descripción de la IP de escucha del balanceador de carga HTTP sin estado.
+
+      frontend localnodes
+          bind *:8081
+          mode http
+          default_backend nodes
+
+      # Lista de servidores web que va a manejar el balanceador
+
+      backend nodes
+          mode http
+          balance roundrobin
+          option forwardfor
+          http-request set-header X-Forwarded-Port %[dst_port]
+          http-request add-header X-Forwarded-Proto https if { ssl_fc }
+          option httpchk HEAD / HTTP/1.1\r\nHost:localhost
+          server web01 192.168.56.101:8080 check
+          server web02 192.168.56.103:8080 check
+
+Se define la IP del balanceador que en este caso será por todas las interfaces del host en el puerto 8081,
+la lista de servidores y la política de balanceo además del protocolo de comunicación. Estas son las principales
+configuraciones del balanceador. Ahora el cliente web podrá acceder a los servidores a través del balanceador...
+
+Para arrancar el balanceador con la configuración actual debemos ejecutar la siguiente orden:
+
+      $ sudo haproxy -f /etc/haproxy/haproxy.cfg
+
+Debemos realizar el comando con privilegios de administrador ya que el balanceador necesita trabajar con directorios
+que pertencen a root.
+
+Una vez lanzado el navegador podremos utilizar la IP del balanceador para acceder al servicio web. Realizamos una primera petición con Postman al balanceador
+de uno de los endpoint de nuestro servidor.
+
+![alt text](haproxy/haproxy-state.png)
