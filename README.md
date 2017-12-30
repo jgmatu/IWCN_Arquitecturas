@@ -375,3 +375,22 @@ por tanto un corte del servicio.
 Si volvemos a arrancar la máquina parada se vuelve a tener las dos máquinas ejecutando el servicio con estado correcto...
 
 ![alt text](haproxy/haproxy-state.png)
+
+
+### Conclusiones extraidas con balanceador.
+
+Una de las cosas importantes es pensar en como se sincronizan entre las instancias los datos recibidos entre los clientes. El soporte de datos de los dos servidores
+ha sido la base de datos que está separada de ambas máquinas en una máquina separada. Por tanto en esta arquitectura teníamos los dos servidores web y una base de datos
+a la que se conectaban ambos servidores. Cuando volvíamos a levantar un servidor no debíamos modificar el contenido de la base de datos por tanto cambiarmos en el
+application.yml la linea de DDL de hibernate.
+
+      ddl-auto: update
+
+Una siguiente arquitectura sería la replicación de los balanceadores de carga. El servicio estaría disponible en diferentes direcciones IP de los frontend que serían los
+balanceadores. Para unificar todo en un único servicio con balanceadores de carga tolerante a fallos necesitaríamos un servicio DNS que tuviera relacionada las direcciones
+IP de los balanceadores de carga al nombre del servicio y sería tarea del servidor DNS decidir a que balanceador de carga redirige a los clientes. Este tipo de arquitectura se
+puede usar para realizar políticas de enrutamineto de baja latencia y altamente disponibles a través del servidor DNS se elige el balanceador de carga con los servidores HTTP
+más cercanos o el balanceador de carga que se encuentre disponible. Faltaría pensar en una replicación de la base de datos a gran escala. Una solución de base de datos con una
+base de datos maestra y varias replicas esclava puede ser una solución si el tipo de base de datos con la que estamos trabajando es relacional. En caso de que la base de datos fuera
+no SQL como MongoDB se podría pensar en particionado de la base de datos en un clúster de máquinas que además de poder ser replicado y por tanto tolerante a fallos podríamos optimizar
+las búsquedas de los clientes en un escalado de la base de datos insertando nuevos nodos al clúster de MongoDB.
