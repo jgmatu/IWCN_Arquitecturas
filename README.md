@@ -339,6 +339,8 @@ Y para acceder a la página de estadísticas:
 
       http://localhost:9000/haproxy_stats
 
+(Referencia de documentación haproxy stardistics)[https://www.datadoghq.com/blog/how-to-collect-haproxy-metrics/]
+
 ![alt text](haproxy/haproxy-state.png)
 
 Se puede observar desde la página de estadísticas el estado de los backend que mantiene el balanceador. En este caso ambas máquinas
