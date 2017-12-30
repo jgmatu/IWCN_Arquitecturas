@@ -394,4 +394,4 @@ base de datos maestra y varias replicas esclava puede ser una solución si el ti
 no SQL como MongoDB se podría pensar en particionado de la base de datos en un clúster de máquinas que además de poder ser replicado y por tanto tolerante a fallos podríamos optimizar
 las búsquedas de los clientes en un escalado de la base de datos insertando nuevos nodos al clúster de MongoDB.
 
-![alt text](arch/dns-arch.png)
+![alt text](arq/dns-arch.png)
