@@ -343,3 +343,15 @@ Y para acceder a la página de estadísticas:
 
 Se puede observar desde la página de estadísticas el estado de los backend que mantiene el balanceador. En este caso ambas máquinas
 están en funcionamiento.
+
+
+Realizamos peticiones de insercción al servidor web, las respuestas recibidas del servidor son siempore 200 OK. Todas las siguientes peticiones
+son también 200 Ok. El balanceador contesta a los clientes con el código de respuesta que le manda el servidor a el es decir.
+
+  - cliente -> Request HTTP haproxy
+  - haproxy -> Request HTTP web server.
+
+  - web server Response 200 OK -> haproxy
+  - haproxy Response 200 OK -> client.
+
+El balaneador es transparente para el cliente.
